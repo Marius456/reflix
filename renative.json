@@ -1,6 +1,12 @@
 {
     "platforms": {},
-    "plugins": {},
+    "plugins": {
+        "@react-native-community/cli-platform-ios": "source:rnv",
+        "@react-native-community/cli": "source:rnv",
+        "react-native-tvos": "source:rnv",
+        "react-native-web": "source:rnv",
+        "next": "source:rnv"
+    },
     "extendsTemplate": "@rnv/template-starter/renative.json",
     "projectName": "reflix",
     "workspaceID": "rnv",
@@ -35,6 +41,5 @@
         }
     },
     "currentTemplate": "@rnv/template-starter",
-    "isNew": true,
     "isMonorepo": false
 }
