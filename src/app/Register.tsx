@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   ActivityIndicator,
   Alert,
@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import styles from './styles/Auth.style';
+import LinearGradient from 'react-native-linear-gradient';
 
 const blue = '#ff0000';
 
@@ -60,59 +61,63 @@ const SigInComponent = () => {
       source={require('./assets/title_bg.jpg')}
       resizeMode="cover"
       style={styles.image}>
-      <SafeAreaView style={styles.containerStyle}>
-        <View style={{ flex: 0.2 }}>
-          {!!fetching && <ActivityIndicator color="blue" />}
-        </View>
-        <View style={styles.headerContainerStyle}>
-          <Text style={styles.headerTitleStyle}> Sign Up </Text>
-        </View>
-        <View style={styles.formContainerStyle}>
-          <TouchableHighlight onFocus={() => emailInputRef.current?.focus()}>
-            <TextInput
-              ref={emailInputRef}
-              keyboardType="email-address"
-              style={styles.textInputStyle}
-              placeholder="Mail address"
-              onChangeText={text => {
-                setError;
-                setEmail(text);
-              }}
-            />
-          </TouchableHighlight>
-
-          <TouchableHighlight
-            onFocus={() => passwordInputRef.current?.focus()}>
-            <TextInput
-              ref={passwordInputRef}
-              secureTextEntry
-              style={styles.textInputStyle}
-              selectionColor={blue}
-              placeholder="Password"
-              onChangeText={text => setPassword(text)}
-            />
-          </TouchableHighlight>
-        </View>
-        {error ? (
-          <View style={styles.errorLabelContainerStyle}>
-            <Text style={styles.errorTextStyle}>{error}</Text>
+      <LinearGradient
+        colors={['transparent', 'black', 'black']}
+        style={styles.linearGradient}>
+        <SafeAreaView style={styles.containerStyle}>
+          <View style={{flex: 0.2}}>
+            {!!fetching && <ActivityIndicator color="blue" />}
           </View>
-        ) : null}
-        <View style={styles.signInButtonContainerStyle}>
-          <TouchableHighlight
-            style={styles.signInButtonStyle}
-            onPress={__doSignUp}
-            underlayColor={blue}>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-around',
-              }}>
-              <Text style={styles.signInButtonTextStyle}>Continue</Text>
+          <View style={styles.headerContainerStyle}>
+            <Text style={styles.headerTitleStyle}> Sign Up </Text>
+          </View>
+          <View style={styles.formContainerStyle}>
+            <TouchableHighlight onFocus={() => emailInputRef.current?.focus()}>
+              <TextInput
+                ref={emailInputRef}
+                keyboardType="email-address"
+                style={styles.textInputStyle}
+                placeholder="Mail address"
+                onChangeText={text => {
+                  setError;
+                  setEmail(text);
+                }}
+              />
+            </TouchableHighlight>
+
+            <TouchableHighlight
+              onFocus={() => passwordInputRef.current?.focus()}>
+              <TextInput
+                ref={passwordInputRef}
+                secureTextEntry
+                style={styles.textInputStyle}
+                selectionColor={blue}
+                placeholder="Password"
+                onChangeText={text => setPassword(text)}
+              />
+            </TouchableHighlight>
+          </View>
+          {error ? (
+            <View style={styles.errorLabelContainerStyle}>
+              <Text style={styles.errorTextStyle}>{error}</Text>
             </View>
-          </TouchableHighlight>
-        </View>
-      </SafeAreaView>
+          ) : null}
+          <View style={styles.signInButtonContainerStyle}>
+            <TouchableHighlight
+              style={styles.signInButtonStyle}
+              onPress={__doSignUp}
+              underlayColor={blue}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-around',
+                }}>
+                <Text style={styles.signInButtonTextStyle}>Continue</Text>
+              </View>
+            </TouchableHighlight>
+          </View>
+        </SafeAreaView>
+      </LinearGradient>
     </ImageBackground>
   );
 };

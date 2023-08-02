@@ -1,9 +1,11 @@
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
-import {ILibrary} from '../interfaces/ILibrary';
-import {Alert} from 'react-native';
+import { ILibrary } from '../interfaces/ILibrary';
+import { Alert } from 'react-native';
 
 export async function addNewDocument(title: String) {
+  console.log(auth().currentUser?.uid);
+  console.log(title);
   try {
     firestore()
       .collection('library')
@@ -13,10 +15,9 @@ export async function addNewDocument(title: String) {
         movieTitle: title,
       })
       .then(() => {
-        Alert.alert(`Added ${title} to your library.`);
-      });
+      Alert.alert(`Added ${title} to your library.`);
+    });
   } catch (error) {
-    console.log(title.toLowerCase().replaceAll(' ', ''));
     console.log(error);
     Alert.alert(`Got error while trying to save movie to library: ${error}`);
   }

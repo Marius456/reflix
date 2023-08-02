@@ -6,13 +6,14 @@
         "next": "source:rnv",
         "@react-native-firebase/app": "source:rnv",
         "@react-native-firebase/auth": "source:rnv",
-        "@react-native-firebase/firestore": "16.7.0",
+        "@react-native-firebase/firestore": "^18.1.0",
         "@react-navigation": "source:rnv",
         "react-native-safe-area-context": "source:rnv",
         "react-native-screens": "source:rnv",
         "@react-native-community/cli-platform-ios": "source:rnv",
         "react-native-tvos": "source:rnv",
-        "react-native-video": "source:rnv"
+        "react-native-video": "source:rnv",
+        "react-native-linear-gradient": "source:rnv"
     },
     "extendsTemplate": "@rnv/template-starter/renative.json",
     "projectName": "reflix",

@@ -6,6 +6,7 @@ import {
   ScrollView,
   View,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {LibraryCard} from './components/LibraryCard';
 import {IMovie} from './interfaces/IMovie';
 import styles from './styles/MovieList.style';
@@ -33,6 +34,9 @@ export function Library({navigation}) {
       source={require('./assets/title_bg.jpg')}
       resizeMode="cover"
       style={styles.image}>
+      <LinearGradient
+        colors={['transparent', 'black']}
+        style={styles.linearGradient}>
         <SafeAreaView style={styles.container}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View>
@@ -46,6 +50,7 @@ export function Library({navigation}) {
             </View>
           </ScrollView>
         </SafeAreaView>
+      </LinearGradient>
     </ImageBackground>
   );
 }
