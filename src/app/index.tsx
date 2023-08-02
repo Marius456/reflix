@@ -1,57 +1,68 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Text, Image, View, PixelRatio, TouchableOpacity } from 'react-native';
-import { Api } from '@rnv/renative';
-import { ICON_LOGO, CONFIG, ThemeProvider, ThemeContext, testProps } from '../config';
-import packageJson from '../../package.json';
+import React from 'react';
+import { Button } from 'react-native';
+import { HomeScreen } from './Home';
+import { Library } from './Library';
+import { LoginScreen } from './Login';
+import { MovieDetails } from './MovieDetails';
+import { MovieList } from './MovieList';
+import SigInComponent from './Register';
+import { VideoPlayer } from './VideoPlayer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
 
-const App = () => (
-    <ThemeProvider>
-        <AppThemed />
-    </ThemeProvider>
-);
 
-const AppThemed = () => {
-    const { theme, toggle }: any = useContext(ThemeContext);
+const Stack = createNativeStackNavigator();
 
-    const [pixelRatio, setPixelRatio] = useState(1);
-    const [fontScale, setFontScale] = useState(1);
-
-    useEffect(() => {
-        setPixelRatio(PixelRatio.get());
-        setFontScale(PixelRatio.getFontScale());
-    }, []);
-
+const App = () => {
     return (
-        <View style={theme.styles.container}>
-            <Image
-                style={theme.styles.image}
-                source={ICON_LOGO}
-                {...testProps('template-starter-home-screen-renative-image')}
-            />
-            <Text style={theme.styles.textH2} {...testProps('template-starter-home-screen-welcome-message-text')}>
-                {CONFIG.welcomeMessage}
-            </Text>
-            <Text style={theme.styles.textH2} {...testProps('template-starter-home-screen-version-number-text')}>
-                v {packageJson.version}
-            </Text>
-            <Text style={theme.styles.textH3}>
-                {`platform: ${Api.platform}, factor: ${Api.formFactor}, engine: ${Api.engine}`}
-            </Text>
-            <Text style={theme.styles.textH3}>
-                {
-                    //@ts-ignore
-                    `hermes: ${global.HermesInternal === undefined ? 'no' : 'yes'}`
-                }
-            </Text>
-            <Text style={theme.styles.textH3}>{`pixelRatio: ${pixelRatio}, ${fontScale}`}</Text>
-            <TouchableOpacity
-                onPress={toggle}
-                style={theme.styles.button}
-                {...testProps('template-starter-home-screen-try-my-button')}
-            >
-                <Text style={theme.styles.buttonText}>Try me!</Text>
-            </TouchableOpacity>
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Home"
+                    component={HomeScreen}
+                    options={{ headerShown: false }}
+                />
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Register" component={SigInComponent} />
+                <Stack.Screen name="Library" component={Library} />
+                <Stack.Screen
+                    name="Movies"
+                    component={MovieList}
+                    options={({ navigation }) => ({
+                        headerRight: () => (
+                            <Button
+                                onPress={() => navigation.navigate('Library')}
+                                title="Library"
+                            />
+                        ),
+                    })}
+                />
+                <Stack.Screen
+                    name="Details"
+                    component={MovieDetails}
+                    options={({ navigation }) => ({
+                        headerRight: () => (
+                            <Button
+                                onPress={() => navigation.navigate('Library')}
+                                title="Library"
+                            />
+                        ),
+                    })}
+                />
+                <Stack.Screen
+                    name="Trailer"
+                    component={VideoPlayer}
+                    options={({ navigation }) => ({
+                        headerRight: () => (
+                            <Button
+                                onPress={() => navigation.navigate('Library')}
+                                title="Library"
+                            />
+                        ),
+                    })}
+                />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 };
 

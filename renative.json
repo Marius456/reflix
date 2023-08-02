@@ -1,11 +1,18 @@
 {
     "platforms": {},
     "plugins": {
-        "@react-native-community/cli-platform-ios": "source:rnv",
         "@react-native-community/cli": "source:rnv",
-        "react-native-tvos": "source:rnv",
         "react-native-web": "source:rnv",
-        "next": "source:rnv"
+        "next": "source:rnv",
+        "@react-native-firebase/app": "source:rnv",
+        "@react-native-firebase/auth": "source:rnv",
+        "@react-native-firebase/firestore": "16.7.0",
+        "@react-navigation": "source:rnv",
+        "react-native-safe-area-context": "source:rnv",
+        "react-native-screens": "source:rnv",
+        "@react-native-community/cli-platform-ios": "source:rnv",
+        "react-native-tvos": "source:rnv",
+        "react-native-video": "source:rnv"
     },
     "extendsTemplate": "@rnv/template-starter/renative.json",
     "projectName": "reflix",
@@ -14,24 +21,9 @@
         "title": "Hello Renative",
         "id": "com.academy.reflix",
         "supportedPlatforms": [
-            "ios",
             "android",
             "androidtv",
-            "firetv",
-            "androidwear",
-            "web",
-            "webtv",
-            "tizen",
-            "tvos",
-            "webos",
-            "macos",
-            "windows",
-            "tizenwatch",
-            "tizenmobile",
-            "kaios",
-            "firefoxos",
-            "firefoxtv",
-            "chromecast"
+            "web"
         ]
     },
     "engines": {},
