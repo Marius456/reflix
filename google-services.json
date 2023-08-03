@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "455480239031",
+    "project_id": "reflix-cafa3",
+    "storage_bucket": "reflix-cafa3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455480239031:android:f9bdeca3c39769035fbe32",
+        "android_client_info": {
+          "package_name": "com.academy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455480239031-tt90pu7ap7rn8kd0888ha20u188c2l7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3XyqIdmJVW0lP0bUAmRaRemdDNRSMVLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455480239031-tt90pu7ap7rn8kd0888ha20u188c2l7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455480239031:android:28795924fbf41aac5fbe32",
+        "android_client_info": {
+          "package_name": "com.academy.reflix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455480239031-uopqg9ui04clucgjqh5iak12d893vo0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.academy.reflix",
+            "certificate_hash": "f0e2f96f8b7721e28eae5109e25c02ea2e8d9d39"
+          }
+        },
+        {
+          "client_id": "455480239031-tt90pu7ap7rn8kd0888ha20u188c2l7p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3XyqIdmJVW0lP0bUAmRaRemdDNRSMVLc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455480239031-tt90pu7ap7rn8kd0888ha20u188c2l7p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
