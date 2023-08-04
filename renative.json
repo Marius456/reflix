@@ -1,38 +1,47 @@
 {
-    "platforms": {},
-    "plugins": {
-        "@react-native-community/cli": "source:rnv",
-        "react-native-web": "source:rnv",
-        "next": "source:rnv",
-        "@react-native-firebase/app": "source:rnv",
-        "@react-native-firebase/auth": "source:rnv",
-        "@react-native-firebase/firestore": "^18.1.0",
-        "@react-navigation": "source:rnv",
-        "react-native-safe-area-context": "source:rnv",
-        "react-native-screens": "source:rnv",
-        "@react-native-community/cli-platform-ios": "source:rnv",
-        "react-native-tvos": "source:rnv",
-        "react-native-video": "source:rnv",
-        "react-native-linear-gradient": "source:rnv"
+  "platforms": {},
+  "plugins": {
+    "@react-native-community/cli": "source:rnv",
+    "react-native-web": "source:rnv",
+    "next": "source:rnv",
+    "@react-native-firebase/app": "source:rnv",
+    "@react-native-firebase/auth": {
+      "android": {
+        "package": "io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage",
+        "projectName": "@react-native-firebase_auth"
+      },
+      "androidtv": {
+        "package": "io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage",
+        "projectName": "@react-native-firebase_auth"
+      },
+      "pluginDependencies": {
+        "@react-native-firebase/app": "source:rnv"
+      },
+      "version": "16.7.0"
     },
-    "extendsTemplate": "@rnv/template-starter/renative.json",
-    "projectName": "reflix",
-    "workspaceID": "rnv",
-    "defaults": {
-        "title": "Hello Renative",
-        "id": "com.academy.reflix",
-        "supportedPlatforms": [
-            "android",
-            "androidtv",
-            "web"
-        ]
-    },
-    "engines": {},
-    "templates": {
-        "@rnv/template-starter": {
-            "version": "0.37.1"
-        }
-    },
-    "currentTemplate": "@rnv/template-starter",
-    "isMonorepo": false
+    "@react-native-firebase/firestore": "^18.1.0",
+    "@react-navigation": "source:rnv",
+    "react-native-safe-area-context": "source:rnv",
+    "react-native-screens": "source:rnv",
+    "@react-native-community/cli-platform-ios": "source:rnv",
+    "react-native-tvos": "source:rnv",
+    "react-native-video": "source:rnv",
+    "react-native-linear-gradient": "source:rnv"
+  },
+  "extendsTemplate": "@rnv/template-starter/renative.json",
+  "projectName": "reflix",
+  "workspaceID": "rnv",
+  "defaults": {
+    "title": "Hello Renative",
+    "id": "com.academy.reflix",
+    "supportedPlatforms": ["android", "androidtv", "web"]
+  },
+  "engines": {},
+  "templates": {
+    "@rnv/template-starter": {
+      "version": "0.37.1"
+    }
+  },
+  "currentTemplate": "@rnv/template-starter",
+  "isMonorepo": false
 }
