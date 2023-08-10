@@ -4,8 +4,61 @@
     "@react-native-community/cli": "source:rnv",
     "react-native-web": "source:rnv",
     "next": "source:rnv",
-    "@react-native-firebase/app": "source:rnv",
+    "@react-native-firebase/app": {
+      "version": "16.7.0",
+      "ios": {
+        "isStatic": true,
+        "podName": "RNFBApp"
+      },
+      "android": {
+        "package": "io.invertase.firebase.app.ReactNativeFirebaseAppPackage",
+        "projectName": "@react-native-firebase_app",
+        "build.gradle": {
+          "buildscript": {
+            "dependencies": ["classpath 'com.google.gms:google-services:4.2.0'"]
+          }
+        },
+        "app/build.gradle": {
+          "apply": ["plugin: 'com.google.gms.google-services'"]
+        }
+      },
+      "androidtv": {
+        "package": "io.invertase.firebase.app.ReactNativeFirebaseAppPackage",
+        "projectName": "@react-native-firebase_app",
+        "build.gradle": {
+          "buildscript": {
+            "dependencies": ["classpath 'com.google.gms:google-services:4.2.0'"]
+          }
+        },
+        "app/build.gradle": {
+          "apply": ["plugin: 'com.google.gms.google-services'"]
+        }
+      }
+    },
     "@react-native-firebase/auth": {
+      "version": "16.7.0",
+      "dependsOn": ["@react-native-firebase/app"],
+      "ios": {
+        "isStatic": true,
+        "podName": "RNFBAuth",
+        "xcodeproj": {
+          "resourceFiles": ["RNVApp/GoogleService-Info.plist"]
+        },
+        "appDelegateImports": ["Firebase"],
+        "appDelegateMethods": {
+          "application": {
+            "didFinishLaunchingWithOptions": [
+              "FirebaseApp.configure()",
+              "let userDefaults = UserDefaults.standard",
+              "if !userDefaults.bool(forKey: \"hasRunBefore\") {",
+              "do { try Auth.auth().signOut() } catch { }",
+              "userDefaults.set(true, forKey: \"hasRunBefore\")",
+              "userDefaults.synchronize()",
+              "}"
+            ]
+          }
+        }
+      },
       "android": {
         "package": "io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage",
         "projectName": "@react-native-firebase_auth"
@@ -13,13 +66,34 @@
       "androidtv": {
         "package": "io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage",
         "projectName": "@react-native-firebase_auth"
-      },
-      "pluginDependencies": {
-        "@react-native-firebase/app": "source:rnv"
-      },
-      "version": "16.7.0"
+      }
     },
-    "@react-native-firebase/firestore": "^18.1.0",
+    "@react-native-firebase/firestore": {
+      "version": "16.7.0",
+      "dependsOn": ["@react-native-firebase/app"],
+      "path": "node_modules/@react-native-firebase/firestore",
+      "ios": {
+        "isStatic": true,
+        "podName": "RNFBFirestore",
+        "xcodeproj": {
+          "resourceFiles": ["RNVApp/GoogleService-Info.plist"]
+        },
+        "appDelegateImports": ["Firebase"],
+        "appDelegateMethods": {
+          "application": {
+            "didFinishLaunchingWithOptions": ["FirebaseApp.configure()"]
+          }
+        }
+      },
+      "android": {
+        "package": "io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage",
+        "projectName": "@react-native-firebase_firestore"
+      },
+      "androidtv": {
+        "package": "io.invertase.firebase.firestore.ReactNativeFirebaseFirestorePackage",
+        "projectName": "@react-native-firebase_firestore"
+      }
+    },
     "@react-navigation": "source:rnv",
     "react-native-safe-area-context": "source:rnv",
     "react-native-screens": "source:rnv",
